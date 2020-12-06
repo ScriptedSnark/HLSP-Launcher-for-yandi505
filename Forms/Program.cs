@@ -17,7 +17,6 @@ namespace HLSP_Launcher_for_yandi505
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainMenu());
-            Application.Run(new GameSelection());
         }
     }
 }
