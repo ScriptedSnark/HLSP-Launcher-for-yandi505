@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3.ico" />
+    <Content Include="update_version.txt" />
     <None Include="Resources\rekords1.png" />
     <None Include="Resources\11.png" />
     <None Include="Resources\activated.wav" />
