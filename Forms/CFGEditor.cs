@@ -37,6 +37,7 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             Process.Start("notepad.exe", @".\\Half-Life\valve_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Half-Life
         }
 
@@ -54,6 +55,7 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             Process.Start("notepad.exe", @".\\Half-Life\gearbox_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Opposing Force
         }
 
@@ -71,6 +73,7 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             Process.Start("notepad.exe", @".\\Half-Life\bshift\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Blue Shift
         }
 
@@ -88,6 +91,7 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button4_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             Process.Start("notepad.exe", @".\\OpenAG\ag\autoexec.cfg"); // Запускаю блокнотом файл конфигурации OpenAG
         }
 
@@ -105,6 +109,7 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button7_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -146,6 +151,7 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button5_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -171,6 +177,7 @@ MessageBoxDefaultButton.Button1);
 
         private void Button6_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -196,13 +203,28 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button9_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            Info Form3 = new Info();
-            Form3.Opacity = 0.0;
-            Form3.Show();
-            FadeIn(Form3, 2);
-            await Task.Delay(50);
-            this.Close();
+            Info Info = (Info)Application.OpenForms["Info"];
+            if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                Info Inf = new Info();
+                Inf.Show();
+                Inf.Opacity = 0.0;
+                Inf.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(Inf, 2);
+                Hide();
+            }
+            else
+            {
+                Info.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                Info.Opacity = 0.0;
+                Info.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(Info, 2);
+                await Task.Delay(50);
+                Hide();
+            }
         }
 
         private void Button9_MouseEnter(object sender, EventArgs e)
