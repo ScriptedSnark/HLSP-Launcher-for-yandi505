@@ -44,12 +44,14 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button2_MouseEnter(object sender, EventArgs e)
         {
-
+            button2.UseVisualStyleBackColor = false;
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Red);
         }
 
         private void Button2_MouseLeave(object sender, EventArgs e)
         {
-
+            button2.UseVisualStyleBackColor = true;
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -100,12 +102,14 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button1_MouseEnter(object sender, EventArgs e)
         {
-
+            button1.UseVisualStyleBackColor = false;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
         }
 
         private void Button1_MouseLeave(object sender, EventArgs e)
         {
-
+            button1.UseVisualStyleBackColor = true;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
         private async void FadeIn(Form o, int interval = 228)
@@ -152,6 +156,17 @@ namespace HLSP_Launcher_for_yandi505
                 await Task.Delay(50);
                 Hide();
             }
+        }
+        private void Button7_MouseEnter(object sender, EventArgs e)
+        {
+            button7.UseVisualStyleBackColor = false;
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+        }
+
+        private void Button7_MouseLeave(object sender, EventArgs e)
+        {
+            button7.UseVisualStyleBackColor = true;
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
     }
 }
