@@ -105,13 +105,31 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button7_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            MainMenu Form1 = new MainMenu();
-            Form1.Opacity = 0.0;
-            Form1.Activate();
-            FadeIn(Form1, 2);
-            await Task.Delay(50);
-            this.Close();
+            MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
+            if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
+                MainMenu.Show(); // Отображаю форму
+                MainMenu.Opacity = 0.0;
+                MainMenu.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(MainMenu, 2);
+                await Task.Delay(50);
+                Close();
+            }
+            else
+            {
+                FadeOut(this, 2);
+                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                MM.Opacity = 0.0;
+                MM.Location = this.Location;
+                MM.Show();
+                await Task.Delay(50);
+                FadeIn(MM, 2);
+                await Task.Delay(50);
+                Close();
+            }
         }
 
         private void Button7_MouseEnter(object sender, EventArgs e)
