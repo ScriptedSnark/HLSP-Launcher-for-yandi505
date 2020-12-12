@@ -20,6 +20,8 @@ namespace HLSP_Launcher_for_yandi505
         {
             InitializeComponent();
 
+            pictureBox1.Focus();
+
             client = new DiscordRpcClient("734435821310050446");
 
             client.OnReady += (sender, e) =>
@@ -93,7 +95,9 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button5_Click(object sender, EventArgs e)
         {
-                DialogResult result = MessageBox.Show(
+            pictureBox1.Focus();
+
+            DialogResult result = MessageBox.Show(
         "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?", 
         "HLSP", 
         MessageBoxButtons.YesNo, 
@@ -118,6 +122,7 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button2_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             CFGEditor CE = (CFGEditor)Application.OpenForms["CFGEditor"];
             if (CE == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -156,6 +161,8 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Button6_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -190,7 +197,6 @@ MessageBoxDefaultButton.Button1);
                 GameSelection.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(GameSelection, 2);
-                await Task.Delay(50);
                 Hide();
             }
             else
@@ -201,9 +207,10 @@ MessageBoxDefaultButton.Button1);
                 GameSelection.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(GameSelection, 2);
-                await Task.Delay(50);
                 Hide();
             }
+
+            pictureBox1.Focus();
         }
 
         private void Button1_MouseEnter(object sender, EventArgs e)
@@ -265,6 +272,8 @@ MessageBoxDefaultButton.Button1);
                 await Task.Delay(50);
                 Hide();
             }
+
+            pictureBox1.Focus();
         }
 
         private void Button7_MouseEnter(object sender, EventArgs e)
@@ -282,6 +291,8 @@ MessageBoxDefaultButton.Button1);
         private void Button3_Click(object sender, EventArgs e)
         {
             Process.Start(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt");
+
+            pictureBox1.Focus();
         }
 
         private void Button3_MouseEnter(object sender, EventArgs e)
@@ -318,6 +329,7 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button4_Click_1(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             Records Records = (Records)Application.OpenForms["Records"];
             if (Records == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -353,6 +365,11 @@ MessageBoxDefaultButton.Button1);
         {
             button4.UseVisualStyleBackColor = true;
             button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

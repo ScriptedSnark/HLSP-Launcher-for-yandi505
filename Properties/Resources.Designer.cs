@@ -178,5 +178,33 @@ namespace HLSP_Launcher_for_yandi505.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на function handle(delta) {
+        ///        window.scrollBy(0,-delta*20)
+        ///}
+        ///
+        ///function wheel(event){
+        ///        var delta = 0;
+        ///        if (!event)
+        ///                event = window.event;
+        ///        if (event.wheelDelta) {
+        ///                delta = event.wheelDelta/120;
+        ///        }
+        ///        if (delta)
+        ///                handle(delta);
+        ///        if (event.preventDefault)
+        ///                event.preventDefault();
+        ///    event.returnValue = false;
+        ///}
+        ///
+        ///if (window.addEventListener)
+        ///    window.onmousewheel = document.onmousewheel = [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string TextFile1 {
+            get {
+                return ResourceManager.GetString("TextFile1", resourceCulture);
+            }
+        }
     }
 }

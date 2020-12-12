@@ -92,7 +92,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(26, 456);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(254, 38);
+            this.button5.Size = new System.Drawing.Size(254, 39);
             this.button5.TabIndex = 7;
             this.button5.TabStop = false;
             this.button5.UseVisualStyleBackColor = false;

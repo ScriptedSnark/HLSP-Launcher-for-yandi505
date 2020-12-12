@@ -1,0 +1,20 @@
+function handle(delta) {
+        window.scrollBy(0,-delta*20)
+}
+
+function wheel(event){
+        var delta = 0;
+        if (!event)
+                event = window.event;
+        if (event.wheelDelta) {
+                delta = event.wheelDelta/120;
+        }
+        if (delta)
+                handle(delta);
+        if (event.preventDefault)
+                event.preventDefault();
+    event.returnValue = false;
+}
+
+if (window.addEventListener)
+    window.onmousewheel = document.onmousewheel = wheel;

@@ -78,13 +78,31 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button4_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            MainMenu MM = new MainMenu();
-            MM.Opacity = 0.0;
-            MM.Activate();
-            FadeIn(MM, 2);
-            await Task.Delay(50);
-            Hide();
+            MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
+            if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
+                MainMenu.Show(); // Отображаю форму
+                MainMenu.Opacity = 0.0;
+                MainMenu.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(MainMenu, 2);
+                await Task.Delay(50);
+                Close();
+            }
+            else
+            {
+                FadeOut(this, 2);
+                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                MM.Opacity = 0.0;
+                MM.Location = this.Location;
+                MM.Show();
+                await Task.Delay(50);
+                FadeIn(MM, 2);
+                await Task.Delay(50);
+                Close();
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -128,7 +146,7 @@ MessageBoxDefaultButton.Button1);
         private void Button5_MouseEnter(object sender, EventArgs e)
         {
             button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Fuchsia);
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Fuchsia);
         }
 
         private void Button5_MouseLeave(object sender, EventArgs e)

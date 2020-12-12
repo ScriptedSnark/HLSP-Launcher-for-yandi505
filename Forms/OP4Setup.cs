@@ -106,14 +106,29 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button2_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            GameSelection GS = new GameSelection();
-            GS.Opacity = 0.0;
-            GS.Location = this.Location;
-            GS.Show();
-            FadeIn(GS, 2);
-            await Task.Delay(50);
-            Close();
+            GameSelection GS = (GameSelection)Application.OpenForms["GameSelection"];
+            if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                GameSelection GameSelection = new GameSelection(); // Создание нового экземпляра формы
+                GameSelection.Show(); // Отображаю форму
+                GameSelection.Opacity = 0.0;
+                GameSelection.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(GameSelection, 2);
+                await Task.Delay(50);
+                Hide();
+            }
+            else
+            {
+                GS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                GS.Opacity = 0.0;
+                GS.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(GS, 2);
+                await Task.Delay(50);
+                Hide();
+            }
         }
 
         private void Button2_MouseEnter(object sender, EventArgs e)

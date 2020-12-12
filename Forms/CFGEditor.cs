@@ -108,7 +108,7 @@ namespace HLSP_Launcher_for_yandi505
             FadeOut(this, 2);
             MainMenu Form1 = new MainMenu();
             Form1.Opacity = 0.0;
-            Form1.Show();
+            Form1.Activate();
             FadeIn(Form1, 2);
             await Task.Delay(50);
             this.Close();

@@ -101,6 +101,7 @@ MessageBoxDefaultButton.Button1);
                 MainMenu.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(MainMenu, 2);
+                await Task.Delay(50);
                 Close();
             }
             else
@@ -197,6 +198,7 @@ MessageBoxDefaultButton.Button1);
                 OP4Setup.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(OP4Setup, 2);
+                await Task.Delay(50);
                 Close();
             }
             else
@@ -206,6 +208,7 @@ MessageBoxDefaultButton.Button1);
                 OP4.Opacity = 0.0;
                 OP4.Location = this.Location;
                 OP4.Show();
+                await Task.Delay(50);
                 FadeIn(OP4, 2);
                 await Task.Delay(50);
                 Close();
@@ -236,6 +239,7 @@ MessageBoxDefaultButton.Button1);
                 BSSetup.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(BSSetup, 2);
+                await Task.Delay(50);
                 Close();
             }
             else
@@ -269,6 +273,8 @@ MessageBoxDefaultButton.Button1);
 
             await Task.Delay(500);
             Application.Exit();
+            
+            // кобан в аг хочет, чел, если ты это читаешь, то PLAY AG PLAY IT NOW
         }
 
         private void Button4_MouseEnter(object sender, EventArgs e)
@@ -285,14 +291,30 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button7_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            Info Form3 = new Info();
-            Form3.Opacity = 0.0;
-            Form3.Location = this.Location;
-            Form3.Show();
-            FadeIn(Form3, 2);
-            await Task.Delay(50);
-            Close();
+            Info Inf = (Info)Application.OpenForms["Info"];
+            if (Inf == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                Info Info = new Info(); // Создание нового экземпляра формы
+                Info.Show(); // Отображаю форму
+                Info.Opacity = 0.0;
+                Info.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(Info, 2);
+                await Task.Delay(50);
+                Close();
+            }
+            else
+            {
+                FadeOut(this, 2);
+                Inf.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                Inf.Opacity = 0.0;
+                Inf.Location = this.Location;
+                Inf.Show();
+                FadeIn(Inf, 2);
+                await Task.Delay(50);
+                Close();
+            }
         }
 
         private void Button7_MouseEnter(object sender, EventArgs e)

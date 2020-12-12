@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLSP_Launcher_for_yandi505.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,7 +53,13 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-
+            speedrun.Document.Body.Style = "zoom:85%;overflow:hidden";
+            HtmlElement head = speedrun.Document.GetElementsByTagName("head")[0];
+            HtmlElement scriptEl = speedrun.Document.CreateElement("script");
+            scriptEl.SetAttribute("language", "javascript");
+            scriptEl.InnerHtml = Resources.TextFile1;
+            head.AppendChild(scriptEl);
+            speedrun.Document.Window.ScrollTo(120, 600);
         }
 
         private void Records_Load(object sender, EventArgs e)
@@ -62,18 +69,33 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button1_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 2);
-            MainMenu MainMenu = new MainMenu();
-            MainMenu.Show();
-            MainMenu.Opacity = 0.0;
-            MainMenu.Location = this.Location;
-            FadeIn(MainMenu, 2);
-            await Task.Delay(50);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            Close();
+            MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
+            if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
+                MainMenu.Show(); // Отображаю форму
+                MainMenu.Opacity = 0.0;
+                MainMenu.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(MainMenu, 2);
+                await Task.Delay(50);
+                Close();
+                speedrun.Dispose();
+            }
+            else
+            {
+                FadeOut(this, 2);
+                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                MM.Opacity = 0.0;
+                MM.Location = this.Location;
+                MM.Show();
+                await Task.Delay(50);
+                FadeIn(MM, 2);
+                await Task.Delay(50);
+                Close();
+                speedrun.Dispose();
+            }
         }
 
         private void Button1_MouseEnter(object sender, EventArgs e)
