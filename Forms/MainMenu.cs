@@ -253,12 +253,11 @@ MessageBoxDefaultButton.Button1);
             if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                Info Inf = new Info();
-                Inf.Show();
-                Inf.Opacity = 0.0;
-                Inf.Location = this.Location;
+                Info.Show();
+                Info.Opacity = 0.0;
+                Info.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Inf, 2);
+                FadeIn(Info, 2);
                 await Task.Delay(50);
                 Hide();
             }
