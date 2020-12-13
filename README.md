@@ -9,6 +9,6 @@ Launcher for HLSP. It has:
 
 TODO:
 
- - [ ] Full optimization
+ - [ X ] Full optimization
  - [ ] Windows Forms to WPF
 
