@@ -126,7 +126,6 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button2_Click(object sender, EventArgs e)
         {
-            pictureBox1.Focus();
             CFGEditor CE = (CFGEditor)Application.OpenForms["CFGEditor"];
             if (CE == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -149,6 +148,7 @@ namespace HLSP_Launcher_for_yandi505
                 await Task.Delay(50);
                 Hide();
             }
+            pictureBox1.Focus();
         }
 
         private void Button2_MouseEnter(object sender, EventArgs e)
@@ -176,12 +176,14 @@ MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             Process.Start("https://www.youtube.com/channel/UCyfrmhORgydjd2cHFwB7YVw");
+
+            this.Focus();
         }
 
         private void Button6_MouseEnter(object sender, EventArgs e)
         {
             button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Red);
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Red);
         }
 
         private void Button6_MouseLeave(object sender, EventArgs e)
