@@ -18,6 +18,14 @@ namespace HLSP_Launcher_for_yandi505
         public Info()
         {
             InitializeComponent();
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -34,10 +42,10 @@ namespace HLSP_Launcher_for_yandi505
         }
 
         private int counter = 0;
-
-
         async private void Button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             counter++;
 
             if (counter == 15)
@@ -62,13 +70,10 @@ MessageBoxDefaultButton.Button1);
 
         }
 
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-
         async private void Button4_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {

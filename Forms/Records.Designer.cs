@@ -33,6 +33,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.speedrun = new System.Windows.Forms.WebBrowser();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button7
@@ -100,6 +102,14 @@
             this.button2.MouseEnter += new System.EventHandler(this.Button2_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.Button2_MouseLeave);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 585);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1, 1);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Records
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,6 +117,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources.rekords1;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.speedrun);
             this.Controls.Add(this.button1);
@@ -121,6 +132,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HLSP";
             this.Load += new System.EventHandler(this.Records_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +143,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.WebBrowser speedrun;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

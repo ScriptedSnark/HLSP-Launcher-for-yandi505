@@ -39,6 +39,8 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Button2_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             Application.Exit();
         }
 
@@ -71,6 +73,7 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
             GC.Collect();
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -138,6 +141,8 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button7_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             Info Info = (Info)Application.OpenForms["Info"];
             if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {

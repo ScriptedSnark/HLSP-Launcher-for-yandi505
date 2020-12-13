@@ -22,6 +22,10 @@ namespace HLSP_Launcher_for_yandi505
 
             pictureBox1.Focus();
 
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             client = new DiscordRpcClient("734435821310050446");
 
             client.OnReady += (sender, e) =>
@@ -187,6 +191,8 @@ MessageBoxDefaultButton.Button1);
         }
         async private void Button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             GameSelection GS = (GameSelection)Application.OpenForms["GameSelection"];
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -209,8 +215,6 @@ MessageBoxDefaultButton.Button1);
                 FadeIn(GameSelection, 2);
                 Hide();
             }
-
-            pictureBox1.Focus();
         }
 
         private void Button1_MouseEnter(object sender, EventArgs e)
@@ -253,11 +257,12 @@ MessageBoxDefaultButton.Button1);
             if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                Info.Show();
-                Info.Opacity = 0.0;
-                Info.Location = this.Location;
+                Info Inf = new Info();
+                Inf.Show();
+                Inf.Opacity = 0.0;
+                Inf.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Info, 2);
+                FadeIn(Inf, 2);
                 await Task.Delay(50);
                 Hide();
             }
