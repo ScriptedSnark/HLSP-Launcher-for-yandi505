@@ -52,17 +52,8 @@ MessageBoxIcon.Warning,
 MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 Process.Start("https://youtu.be/Zjselp9uRgM");
-                FadeOut(this, 2);
-                MainMenu Form1 = new MainMenu();
-                Form1.Show();
-                Form1.Opacity = 0.0;
-                FadeIn(Form1, 2);
-                await Task.Delay(50);
-                Close();
-                GC.Collect();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                counter = 0;
+                await Task.Delay(100);
+                Application.Restart();
             }
         }
 

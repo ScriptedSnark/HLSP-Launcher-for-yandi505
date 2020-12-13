@@ -311,6 +311,7 @@ MessageBoxDefaultButton.Button1);
                 Inf.Opacity = 0.0;
                 Inf.Location = this.Location;
                 Inf.Show();
+                await Task.Delay(50);
                 FadeIn(Inf, 2);
                 await Task.Delay(50);
                 Close();

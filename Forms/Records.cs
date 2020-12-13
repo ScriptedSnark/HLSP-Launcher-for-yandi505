@@ -55,13 +55,13 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            speedrun.Document.Body.Style = "zoom:85%;overflow:hidden";
+            speedrun.Document.Body.Style = "zoom:80%;overflow:hidden";
             HtmlElement head = speedrun.Document.GetElementsByTagName("head")[0];
             HtmlElement scriptEl = speedrun.Document.CreateElement("script");
             scriptEl.SetAttribute("language", "javascript");
             scriptEl.InnerHtml = Resources.TextFile1;
             head.AppendChild(scriptEl);
-            speedrun.Document.Window.ScrollTo(120, 600);
+            speedrun.Document.Window.ScrollTo(55, 615);
         }
 
         private void Records_Load(object sender, EventArgs e)
@@ -71,6 +71,10 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void Button1_Click(object sender, EventArgs e)
         {
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
