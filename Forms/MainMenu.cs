@@ -59,7 +59,7 @@ namespace HLSP_Launcher_for_yandi505
 
             try
             {
-                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.0"))
+                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.1"))
                 {
                     if (MessageBox.Show("Доступно новое обновление HLSP. Желаете ли вы установить самую последнюю версию?", "HLSP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         using (var client = new WebClient())
