@@ -54,12 +54,18 @@ namespace HLSP_Launcher_for_yandi505
                     SmallImageKey = "image_small"
                 }
             });
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
             WebClient webClient = new WebClient();
+            // Плавность запуска
+            this.Opacity = 0;
+            FadeIn(this, 20);
 
             try
             {
-                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.1"))
+                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.0"))
                 {
                     if (MessageBox.Show("Доступно новое обновление HLSP. Желаете ли вы установить самую последнюю версию?", "HLSP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         using (var client = new WebClient())
@@ -73,13 +79,6 @@ namespace HLSP_Launcher_for_yandi505
             {
 
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // Плавность запуска
-            this.Opacity = 0;
-            FadeIn(this, 20);
         }
 
         public DiscordRpcClient client;
