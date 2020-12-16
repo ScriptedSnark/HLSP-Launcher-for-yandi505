@@ -81,7 +81,7 @@ MessageBoxDefaultButton.Button1);
         private void Button2_MouseEnter(object sender, EventArgs e)
         {
             button2.UseVisualStyleBackColor = false;
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Fuchsia);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Fuchsia);
         }
 
         private void Button2_MouseLeave(object sender, EventArgs e)
