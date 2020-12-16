@@ -65,7 +65,7 @@ namespace HLSP_Launcher_for_yandi505
                         using (var client = new WebClient())
                         {
                             Process.Start("Updater.exe");
-                            Application.Exit();
+                            Close();
                         }
                 }
             }
