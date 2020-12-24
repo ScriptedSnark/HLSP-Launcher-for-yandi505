@@ -116,7 +116,12 @@ MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
-
+                    MessageBox.Show(
+"Не удалось запустить RInput, так как отсутствует RInput.exe. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
                 }
 
                 if (File.Exists(LiveSplitpath))
@@ -128,7 +133,12 @@ MessageBoxDefaultButton.Button1);
                 }
                 else
                 {
-
+                    MessageBox.Show(
+"Не удалось запустить LiveSplit, так как отсутствует LiveSplit.exe. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
                 }
             }
         }
