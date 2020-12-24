@@ -189,7 +189,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources._4;
+            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources.HL1Setup;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.button4);
@@ -210,6 +210,7 @@
             this.Name = "HL1Setup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HLSP";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HL1Setup_FormClosed);
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
 

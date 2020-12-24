@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace HLSP_Launcher_for_yandi505
 {
@@ -15,7 +16,7 @@ namespace HLSP_Launcher_for_yandi505
     {
         public CFGEditor()
         {
-            InitializeComponent(); // Инициализирую компонент
+            InitializeComponent();
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -38,7 +39,19 @@ namespace HLSP_Launcher_for_yandi505
         private void Button1_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
-            Process.Start("notepad.exe", @".\\Half-Life\valve_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Half-Life
+            if (File.Exists(@".\\Half-Life\valve_WON\autoexec.cfg"))
+            {
+                Process.Start("notepad.exe", @".\\Half-Life\valve_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Half-Life
+            }
+            else
+            {
+                MessageBox.Show(
+"Конфиг не найден. Убедитесь, что файл autoexec.cfg присутствует в папке valve_WON.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void Button1_MouseEnter(object sender, EventArgs e)
@@ -56,7 +69,19 @@ namespace HLSP_Launcher_for_yandi505
         private void Button2_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
-            Process.Start("notepad.exe", @".\\Half-Life\gearbox_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Opposing Force
+            if (File.Exists(@".\\Half-Life\gearbox_WON\autoexec.cfg"))
+            {
+                Process.Start("notepad.exe", @".\\Half-Life\gearbox_WON\autoexec.cfg"); // Запускаю блокнотом файл конфигурации Opposing Force
+            }
+            else
+            {
+                MessageBox.Show(
+"Конфиг не найден. Убедитесь, что файл autoexec.cfg присутствует по пути Half-Life/gearbox_WON.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void Button2_MouseEnter(object sender, EventArgs e)
@@ -121,19 +146,18 @@ namespace HLSP_Launcher_for_yandi505
                 await Task.Delay(50);
                 FadeIn(MainMenu, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
                 FadeIn(MM, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -163,18 +187,6 @@ MessageBoxDefaultButton.Button1);
             Process.Start("https://discord.gg/E5kg4qV");
         }
 
-        private void Button5_MouseEnter(object sender, EventArgs e)
-        {
-            button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Blue);
-        }
-
-        private void Button5_MouseLeave(object sender, EventArgs e)
-        {
-            button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
-
         private void Button6_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
@@ -187,18 +199,6 @@ MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
             Process.Start("https://www.youtube.com/channel/UCyfrmhORgydjd2cHFwB7YVw");
-        }
-
-        private void Button6_MouseEnter(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Red);
-        }
-
-        private void Button6_MouseLeave(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
         async private void Button9_Click(object sender, EventArgs e)
@@ -217,7 +217,8 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                Info.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                FadeOut(this, 2);
+                Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
                 await Task.Delay(50);
@@ -257,7 +258,9 @@ MessageBoxDefaultButton.Button1);
         }
         private void Form8_Load(object sender, EventArgs e)
         {
-
+            MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
+            this.Opacity = 0.0;
+            this.Location = MainMenu.Location;
         }
 
         private async void FadeIn(Form o, int interval = 228)
@@ -278,6 +281,11 @@ MessageBoxDefaultButton.Button1);
                 o.Opacity -= 0.10;
             }
             o.Opacity = 0; // Сделать окно полностью невидимым       
+        }
+
+        private void CFGEditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

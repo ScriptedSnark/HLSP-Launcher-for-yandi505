@@ -173,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources._5;
+            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources.OP4Setup;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.button2);
@@ -193,6 +193,7 @@
             this.Name = "OP4Setup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HLSP";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OP4Setup_FormClosed);
             this.Load += new System.EventHandler(this.Form5_Load);
             this.ResumeLayout(false);
 

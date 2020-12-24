@@ -48,7 +48,9 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Form5_Load(object sender, EventArgs e)
         {
-
+            GameSelection GameSelection = (GameSelection)Application.OpenForms["GameSelection"];
+            this.Opacity = 0.0;
+            this.Location = GameSelection.Location;
         }
 
         async private void Button1_Click(object sender, EventArgs e)
@@ -121,7 +123,7 @@ namespace HLSP_Launcher_for_yandi505
             }
             else
             {
-                GS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 GS.Opacity = 0.0;
                 GS.Location = this.Location;
                 await Task.Delay(50);
@@ -209,6 +211,11 @@ MessageBoxDefaultButton.Button1);
                 o.Opacity -= 0.10;
             }
             o.Opacity = 0; //make fully invisible       
+        }
+
+        private void OP4Setup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

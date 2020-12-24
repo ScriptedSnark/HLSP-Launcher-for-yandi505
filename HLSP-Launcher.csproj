@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\About-Dev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About-Dev.Designer.cs">
+      <DependentUpon>About-Dev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BSSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
       <DependentUpon>Records.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\About-Dev.resx">
+      <DependentUpon>About-Dev.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BSSetup.resx">
       <DependentUpon>BSSetup.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,11 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3.ico" />
-    <None Include="Resources\TextFile1.txt" />
     <Content Include="update_version.txt" />
-    <None Include="Resources\rekords1.png" />
-    <None Include="Resources\11.png" />
-    <None Include="Resources\activated.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

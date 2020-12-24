@@ -21,22 +21,8 @@ namespace HLSP_Launcher_for_yandi505
             GC.WaitForPendingFinalizers();
             GC.Collect(1, GCCollectionMode.Optimized);
             GC.WaitForPendingFinalizers();
-
-            int num = 0;
-            TimerCallback tm = new TimerCallback(Optimization);
-            System.Threading.Timer timer = new System.Threading.Timer(tm, num, 0, 5000);
         }
 
-        async private void Optimization(object obj)
-        {
-            GC.Collect(1, GCCollectionMode.Optimized);
-            GC.WaitForPendingFinalizers();
-            GC.Collect(1, GCCollectionMode.Optimized);
-            GC.WaitForPendingFinalizers();
-            await Task.Delay(500);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
         private void Button2_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
@@ -57,18 +43,18 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            speedrun.Document.Body.Style = "zoom:80%;overflow:hidden";
-            HtmlElement head = speedrun.Document.GetElementsByTagName("head")[0];
-            HtmlElement scriptEl = speedrun.Document.CreateElement("script");
-            scriptEl.SetAttribute("language", "javascript");
-            scriptEl.InnerHtml = Resources.TextFile1;
-            head.AppendChild(scriptEl);
+            speedrun.Document.Body.Style = "zoom:80%";
             speedrun.Document.Window.ScrollTo(55, 615);
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Records_Load(object sender, EventArgs e)
         {
-
+            MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
+            MainMenu.Opacity = 0.0;
+            MainMenu.Location = this.Location;
         }
 
         async private void Button1_Click(object sender, EventArgs e)
@@ -84,26 +70,21 @@ namespace HLSP_Launcher_for_yandi505
                 FadeOut(this, 2);
                 MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
                 MainMenu.Show(); // Отображаю форму
-                MainMenu.Opacity = 0.0;
-                MainMenu.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(MainMenu, 2);
                 await Task.Delay(50);
-                Close();
-                speedrun.Dispose();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
                 FadeIn(MM, 2);
                 await Task.Delay(50);
-                Close();
-                speedrun.Dispose();
+                Hide();
             }
         }
 
@@ -157,7 +138,7 @@ namespace HLSP_Launcher_for_yandi505
             }
             else
             {
-                Info.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
                 await Task.Delay(50);

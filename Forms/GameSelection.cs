@@ -51,18 +51,6 @@ MessageBoxDefaultButton.Button1);
                 Process.Start("https://discord.gg/E5kg4qV");
         }
 
-        private void Button5_MouseEnter(object sender, EventArgs e)
-        {
-            button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Blue);
-        }
-
-        private void Button5_MouseLeave(object sender, EventArgs e)
-        {
-            button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
-
         private void Button6_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -74,19 +62,6 @@ MessageBoxDefaultButton.Button1);
 
             if (result == DialogResult.Yes)
                 Process.Start("https://www.youtube.com/channel/UCyfrmhORgydjd2cHFwB7YVw");
-        }
-
-
-        private void Button6_MouseEnter(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Red);
-        }
-
-        private void Button6_MouseLeave(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
         async private void Button8_Click(object sender, EventArgs e)
@@ -102,19 +77,18 @@ MessageBoxDefaultButton.Button1);
                 await Task.Delay(50);
                 FadeIn(MainMenu, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
                 FadeIn(MM, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -155,23 +129,21 @@ MessageBoxDefaultButton.Button1);
                 FadeOut(this, 2);
                 HL1Setup HL1Setup = new HL1Setup(); // Создание нового экземпляра формы
                 HL1Setup.Show(); // Отображаю форму
-                HL1Setup.Opacity = 0.0;
-                HL1Setup.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(HL1Setup, 2);
-                Close();
+                await Task.Delay(50);
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                HL1.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 HL1.Opacity = 0.0;
                 HL1.Location = this.Location;
                 HL1.Show();
                 await Task.Delay(50);
                 FadeIn(HL1, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -194,24 +166,21 @@ MessageBoxDefaultButton.Button1);
                 FadeOut(this, 2);
                 OP4Setup OP4Setup = new OP4Setup(); // Создание нового экземпляра формы
                 OP4Setup.Show(); // Отображаю форму
-                OP4Setup.Opacity = 0.0;
-                OP4Setup.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(OP4Setup, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                OP4.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 OP4.Opacity = 0.0;
                 OP4.Location = this.Location;
                 OP4.Show();
                 await Task.Delay(50);
                 FadeIn(OP4, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -235,23 +204,21 @@ MessageBoxDefaultButton.Button1);
                 FadeOut(this, 2);
                 BSSetup BSSetup = new BSSetup(); // Создание нового экземпляра формы
                 BSSetup.Show(); // Отображаю форму
-                BSSetup.Opacity = 0.0;
-                BSSetup.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(BSSetup, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                BS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 BS.Opacity = 0.0;
                 BS.Location = this.Location;
                 BS.Show();
+                await Task.Delay(50);
                 FadeIn(BS, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -297,24 +264,21 @@ MessageBoxDefaultButton.Button1);
                 FadeOut(this, 2);
                 Info Info = new Info(); // Создание нового экземпляра формы
                 Info.Show(); // Отображаю форму
-                Info.Opacity = 0.0;
-                Info.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(Info, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                Inf.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                Inf.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 Inf.Opacity = 0.0;
                 Inf.Location = this.Location;
-                Inf.Show();
                 await Task.Delay(50);
                 FadeIn(Inf, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -351,7 +315,14 @@ MessageBoxDefaultButton.Button1);
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
+            this.Opacity = 0.0;
+            this.Location = MainMenu.Location;
+        }
 
+        private void GameSelection_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -130,7 +130,8 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                GS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                FadeOut(this, 2);
+                GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 GS.Opacity = 0.0;
                 GS.Location = this.Location;
                 await Task.Delay(50);
@@ -171,7 +172,9 @@ MessageBoxDefaultButton.Button1);
 
         private void Form6_Load(object sender, EventArgs e)
         {
-
+            GameSelection GameSelection = (GameSelection)Application.OpenForms["GameSelection"];
+            this.Opacity = 0.0;
+            this.Location = GameSelection.Location;
         }
 
         private async void FadeIn(Form o, int interval = 228)

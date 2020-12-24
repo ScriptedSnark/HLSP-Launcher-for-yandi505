@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace HLSP_Launcher_for_yandi505
 {
@@ -16,6 +17,10 @@ namespace HLSP_Launcher_for_yandi505
         public HL1Setup()
         {
             InitializeComponent();
+
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -29,6 +34,10 @@ namespace HLSP_Launcher_for_yandi505
             }
 
             base.WndProc(ref m);
+
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -58,24 +67,70 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button2_Click(object sender, EventArgs e)
         {
-            Process.Start(@".\\Half-Life\hl.exe", "-game valve_WON -noforcemparams +exec autoexec.cfg");
+            const string HLpath = @".\\Half-Life\hl.exe";
+            const string BXTpath = @".\\Bunnymod XT\Injector.exe";
+            const string RInputpath = @".\\RInput\RInput.exe";
+            const string LiveSplitpath = @".\\LiveSplit\LiveSplit.exe";
 
-            if (checkBox1.Checked == true)
+            if (File.Exists(HLpath))
             {
-                Process.Start(@".\\Bunnymod XT\Injector.exe", "-processname hl.exe"); ;
+                Process.Start(HLpath, "-game valve_WON -noforcemparams +exec autoexec.cfg");
+                await Task.Delay(1000);
+                Application.Exit();
             }
+            else
+            {
+                MessageBox.Show(
+"Не удалось запустить Half-Life, так как отсутствует hl.exe. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+                GC.Collect();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
 
-            if (checkBox2.Checked == true)
-            {
-                Process.Start(@".\\RInput\RInput.exe", "hl.exe");
-            }
+                if (File.Exists(BXTpath))
+                {
+                    if (checkBox1.Checked == true)
+                    {
+                        Process.Start(BXTpath, "-processname hl.exe");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(
+"Не удалось запустить утилиту BXT, так как отсутствует Injector.exe. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+                }
 
-            if (checkBox3.Checked == true)
-            {
-                Process.Start(@".\\LiveSplit\LiveSplit.exe");
+                if (File.Exists(RInputpath))
+                {
+                    if (checkBox2.Checked == true)
+                    {
+                        Process.Start(RInputpath, "hl.exe");
+                    }
+                }
+                else
+                {
+
+                }
+
+                if (File.Exists(LiveSplitpath))
+                {
+                    if (checkBox3.Checked == true)
+                    {
+                        Process.Start(LiveSplitpath);
+                    }
+                }
+                else
+                {
+
+                }
             }
-            await Task.Delay(1000);
-            Application.Exit();
         }
 
         private void Button2_MouseEnter(object sender, EventArgs e)
@@ -122,7 +177,8 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                GS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                FadeOut(this, 2);
+                GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 GS.Opacity = 0.0;
                 GS.Location = this.Location;
                 await Task.Delay(50);
@@ -171,7 +227,9 @@ MessageBoxDefaultButton.Button1);
 
         private void Form4_Load(object sender, EventArgs e)
         {
-
+            GameSelection GameSelection = (GameSelection)Application.OpenForms["GameSelection"];
+            this.Opacity = 0.0;
+            this.Location = GameSelection.Location;
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -209,6 +267,11 @@ MessageBoxDefaultButton.Button1);
                 o.Opacity -= 0.10;
             }
             o.Opacity = 0; //make fully invisible       
+        }
+
+        private void HL1Setup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

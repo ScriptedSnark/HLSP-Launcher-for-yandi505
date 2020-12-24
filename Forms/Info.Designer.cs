@@ -115,7 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources._31;
+            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources.Info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.pictureBox1);
@@ -132,6 +132,7 @@
             this.Name = "Info";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Half-Life Speedrun Package";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Info_FormClosed);
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

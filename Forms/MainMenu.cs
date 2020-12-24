@@ -11,6 +11,8 @@ using System.Diagnostics;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using System.Net;
+using System.IO;
+using System.Windows;
 
 namespace HLSP_Launcher_for_yandi505
 {
@@ -65,7 +67,7 @@ namespace HLSP_Launcher_for_yandi505
 
             try
             {
-                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.1"))
+                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.0"))
                 {
                     if (MessageBox.Show("Доступно новое обновление HLSP. Желаете ли вы установить самую последнюю версию?", "HLSP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         using (var client = new WebClient())
@@ -101,7 +103,7 @@ namespace HLSP_Launcher_for_yandi505
             pictureBox1.Focus();
 
             DialogResult result = MessageBox.Show(
-        "Внимание! При нажатии на кнопку Тест, у вас откроется браузер. Согласны ли вы перейти по ссылке?", 
+        "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?", 
         "HLSP", 
         MessageBoxButtons.YesNo, 
         MessageBoxIcon.Warning, 
@@ -140,7 +142,9 @@ namespace HLSP_Launcher_for_yandi505
             }
             else
             {
-                CE.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                FadeOut(this, 2);
+                CE.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                CE.Opacity = 0.0;
                 CE.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(CE, 2);
@@ -198,24 +202,28 @@ MessageBoxDefaultButton.Button1);
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                GameSelection GameSelection = new GameSelection(); // Создание нового экземпляра формы
-                GameSelection.Show(); // Отображаю форму
-                GameSelection.Opacity = 0.0;
-                GameSelection.Location = this.Location;
+                GameSelection GameSelection = new GameSelection(); // Отображаю форму
+                GameSelection.Show();
                 await Task.Delay(50);
                 FadeIn(GameSelection, 2);
+                await Task.Delay(50);
                 Hide();
             }
             else
             {
-                GS.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
-                GameSelection GameSelection = new GameSelection();
-                GameSelection.Opacity = 0.0;
-                GameSelection.Location = this.Location;
+                FadeOut(this, 2);
+                GS.Opacity = 0.0;
+                GS.Location = this.Location;
+                GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 await Task.Delay(50);
-                FadeIn(GameSelection, 2);
+                FadeIn(GS, 2);
+                await Task.Delay(50);
                 Hide();
             }
+
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Button1_MouseEnter(object sender, EventArgs e)
@@ -228,11 +236,6 @@ MessageBoxDefaultButton.Button1);
         {
             button1.UseVisualStyleBackColor = true;
             button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
-
-        private void Button4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Button8_Click(object sender, EventArgs e)
@@ -260,8 +263,6 @@ MessageBoxDefaultButton.Button1);
                 FadeOut(this, 2);
                 Info Inf = new Info();
                 Inf.Show();
-                Inf.Opacity = 0.0;
-                Inf.Location = this.Location;
                 await Task.Delay(50);
                 FadeIn(Inf, 2);
                 await Task.Delay(50);
@@ -269,9 +270,10 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                Info.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                FadeOut(this, 2);
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
+                Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 await Task.Delay(50);
                 FadeIn(Info, 2);
                 await Task.Delay(50);
@@ -295,9 +297,20 @@ MessageBoxDefaultButton.Button1);
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Process.Start(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt");
-
             pictureBox1.Focus();
+            if (File.Exists(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt"))
+            {
+                Process.Start(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt");
+            }
+            else
+            {
+                MessageBox.Show(
+    "Инструкция не найдена. Убедитесь, что файл .ИНСТРУКЦИЯ И БИНДЫ.txt присутствует в директории сборки.",
+    "HLSP",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Error,
+    MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void Button3_MouseEnter(object sender, EventArgs e)
@@ -350,12 +363,11 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                Records.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
-                Records Rec = new Records();
-                Rec.Opacity = 0.0;
-                Rec.Location = this.Location;
+                Records.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                Records.Opacity = 0.0;
+                Records.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Rec, 2);
+                FadeIn(Records, 2);
                 await Task.Delay(50);
                 Hide();
             }
@@ -375,6 +387,45 @@ MessageBoxDefaultButton.Button1);
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        async private void button9_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Focus();
+            About_Dev AboutDev = (About_Dev)Application.OpenForms["About_Dev"];
+            if (AboutDev == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                FadeOut(this, 2);
+                About_Dev About = new About_Dev(); // Создание нового экземпляра формы
+                About.Show(); // Отображаю форму
+                await Task.Delay(50);
+                FadeIn(About, 2);
+                await Task.Delay(50);
+                Hide();
+            }
+            else
+            {
+                FadeOut(this, 2);
+                AboutDev.Show();
+                AboutDev.Opacity = 0.0;
+                AboutDev.Location = this.Location;
+                await Task.Delay(50);
+                FadeIn(AboutDev, 2);
+                await Task.Delay(50);
+                Hide();
+            }
+        }
+
+        private void button9_MouseEnter(object sender, EventArgs e)
+        {
+            button9.UseVisualStyleBackColor = false;
+            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Aquamarine);
+        }
+
+        private void button9_MouseLeave(object sender, EventArgs e)
+        {
+            button9.UseVisualStyleBackColor = true;
+            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace HLSP_Launcher_for_yandi505
             this.button8 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,12 +49,12 @@ namespace HLSP_Launcher_for_yandi505
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(223, 163);
+            this.button1.Location = new System.Drawing.Point(223, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(352, 63);
             this.button1.TabIndex = 0;
@@ -67,8 +68,8 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -87,8 +88,8 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -106,14 +107,14 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(1, 489);
+            this.button5.Location = new System.Drawing.Point(175, 559);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(133, 41);
+            this.button5.Size = new System.Drawing.Size(126, 38);
             this.button5.TabIndex = 4;
             this.button5.TabStop = false;
             this.button5.UseVisualStyleBackColor = false;
@@ -125,14 +126,14 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(1, 548);
+            this.button6.Location = new System.Drawing.Point(487, 559);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(159, 35);
+            this.button6.Size = new System.Drawing.Size(138, 38);
             this.button6.TabIndex = 5;
             this.button6.TabStop = false;
             this.button6.UseVisualStyleBackColor = false;
@@ -144,8 +145,8 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -163,8 +164,8 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button8.BackColor = System.Drawing.Color.Transparent;
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -182,8 +183,8 @@ namespace HLSP_Launcher_for_yandi505
             // 
             this.button4.BackColor = System.Drawing.Color.Transparent;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,15 +207,35 @@ namespace HLSP_Launcher_for_yandi505
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(318, 559);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(149, 38);
+            this.button9.TabIndex = 10;
+            this.button9.TabStop = false;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
+            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources._11;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button8);
@@ -251,6 +272,7 @@ namespace HLSP_Launcher_for_yandi505
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button9;
     }
 }
 

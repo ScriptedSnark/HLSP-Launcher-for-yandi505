@@ -25,7 +25,9 @@ namespace HLSP_Launcher_for_yandi505
 
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
+            this.Opacity = 0.0;
+            this.Location = MainMenu.Location;
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -85,19 +87,18 @@ MessageBoxDefaultButton.Button1);
                 await Task.Delay(50);
                 FadeIn(MainMenu, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
             else
             {
                 FadeOut(this, 2);
-                MM.Activate(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
+                MM.Show();
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
-                MM.Show();
                 await Task.Delay(50);
                 FadeIn(MM, 2);
                 await Task.Delay(50);
-                Close();
+                Hide();
             }
         }
 
@@ -149,6 +150,11 @@ MessageBoxDefaultButton.Button1);
         {
             button5.UseVisualStyleBackColor = true;
             button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
+        }
+
+        private void Info_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
