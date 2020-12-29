@@ -3,7 +3,7 @@
 Launcher for HLSP. It has:
 
 * AutoUpdater
-* Discord RPC (WIP)
+* Discord RPC
 * CFG Editor
 * HL1, HL:OP4, HL:BS launcher with Setup (BXT, RInput, LiveSplit)
 * Browser with HL1 leaderboard
