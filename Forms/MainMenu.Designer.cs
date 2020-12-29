@@ -216,9 +216,9 @@ namespace HLSP_Launcher_for_yandi505
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(318, 559);
+            this.button9.Location = new System.Drawing.Point(318, 561);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(149, 38);
+            this.button9.Size = new System.Drawing.Size(147, 34);
             this.button9.TabIndex = 10;
             this.button9.TabStop = false;
             this.button9.UseVisualStyleBackColor = false;

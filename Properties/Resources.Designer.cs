@@ -112,9 +112,9 @@ namespace HLSP_Launcher_for_yandi505.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HL1Setup {
+        internal static System.Drawing.Bitmap HLSetup {
             get {
-                object obj = ResourceManager.GetObject("HL1Setup", resourceCulture);
+                object obj = ResourceManager.GetObject("HLSetup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

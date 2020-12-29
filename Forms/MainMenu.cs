@@ -1,65 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using DiscordRPC;
-using DiscordRPC.Logging;
 using System.Net;
 using System.IO;
-using System.Windows;
 
 namespace HLSP_Launcher_for_yandi505
 {
     public partial class MainMenu : Form
     {
+        MainController controller;
         public MainMenu()
         {
             InitializeComponent();
-
+            controller = new MainController();
+            controller.updateRPC();
             pictureBox1.Focus();
 
             GC.Collect();
             GC.Collect();
             GC.WaitForPendingFinalizers();
-
-            client = new DiscordRpcClient("734435821310050446");
-
-            client.OnReady += (sender, e) =>
-            {
-                Console.WriteLine("Received Ready from user {0}", e.User.Username);
-            };
-
-            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
-
-            client.OnPresenceUpdate += (sender, e) =>
-            {
-                Console.WriteLine("Received Update! {0}", e.Presence);
-            };
-
-            client.Initialize();
-
-            client.SetPresence(new RichPresence()
-            {
-                Details = "discord.gg/E5kg4qV",
-                State = "Находится в лаунчере",
-                Timestamps = Timestamps.Now,
-                Assets = new Assets()
-                {
-                    LargeImageKey = "image_large",
-                    LargeImageText = "YouTube: Уголок Спидраннера",
-                    SmallImageKey = "image_small"
-                }
-            });
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // VERSION OF HLSP
+            string HLSPversion = "1.0.0.0";
+            // VERSION OF HLSP
+
             WebClient webClient = new WebClient();
             // Плавность запуска
             this.Opacity = 0;
@@ -67,7 +37,7 @@ namespace HLSP_Launcher_for_yandi505
 
             try
             {
-                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains("1.0.0.1"))
+                if (!webClient.DownloadString("https://raw.githubusercontent.com/ScriptedSnark/HLSP-Launcher-for-yandi505/master/update_version.txt").Contains(HLSPversion))
                 {
                     if (MessageBox.Show("Доступно новое обновление HLSP. Желаете ли вы установить самую последнюю версию?", "HLSP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         using (var client = new WebClient())
@@ -202,7 +172,7 @@ MessageBoxDefaultButton.Button1);
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                GameSelection GameSelection = new GameSelection(); // Отображаю форму
+                GameSelection GameSelection = new GameSelection(controller); // Отображаю форму
                 GameSelection.Show();
                 await Task.Delay(50);
                 FadeIn(GameSelection, 2);
@@ -419,7 +389,7 @@ MessageBoxDefaultButton.Button1);
         private void button9_MouseEnter(object sender, EventArgs e)
         {
             button9.UseVisualStyleBackColor = false;
-            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.Aquamarine);
+            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(5, Color.Aquamarine);
         }
 
         private void button9_MouseLeave(object sender, EventArgs e)

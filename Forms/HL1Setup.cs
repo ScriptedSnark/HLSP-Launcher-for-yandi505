@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -14,13 +9,16 @@ namespace HLSP_Launcher_for_yandi505
 {
     public partial class HL1Setup : Form
     {
-        public HL1Setup()
+        MainController controller;
+        public HL1Setup(MainController prevFormController)
         {
+            controller = prevFormController;
             InitializeComponent();
 
             GC.Collect();
             GC.Collect();
             GC.WaitForPendingFinalizers();
+
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -67,16 +65,25 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button2_Click(object sender, EventArgs e)
         {
-            const string HLpath = @".\\Half-Life\hl.exe";
-            const string BXTpath = @".\\Bunnymod XT\Injector.exe";
-            const string RInputpath = @".\\RInput\RInput.exe";
-            const string LiveSplitpath = @".\\LiveSplit\LiveSplit.exe";
-
-            if (File.Exists(HLpath))
+            if (File.Exists(@".\\Half-Life\hl.exe"))
             {
-                Process.Start(HLpath, "-game valve_WON -noforcemparams +exec autoexec.cfg");
-                await Task.Delay(1000);
-                Application.Exit();
+                Process.Start(@".\\Half-Life\hl.exe", "-game valve_WON -noforcemparams +exec autoexec.cfg");
+
+                if (checkBox1.Checked == true)
+                {
+                    Process.Start(@".\\Bunnymod XT\Injector.exe", "-processname hl.exe");
+                }
+
+                if (checkBox2.Checked == true)
+                {
+                    Process.Start(@".\\RInput\RInput.exe", "hl.exe");
+                }
+
+                Hide();
+
+                await Task.Delay(4500);
+                controller.updateRPC("discord.gg/E5kg4qV", "Играет в Half-Life: WON", "hlwon");
+                timer1.Start();
             }
             else
             {
@@ -89,57 +96,20 @@ MessageBoxDefaultButton.Button1);
                 GC.Collect();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-
-                if (File.Exists(BXTpath))
-                {
-                    if (checkBox1.Checked == true)
-                    {
-                        Process.Start(BXTpath, "-processname hl.exe");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(
-"Не удалось запустить утилиту BXT, так как отсутствует Injector.exe. Проверьте целостность сборки.",
-"HLSP",
-MessageBoxButtons.OK,
-MessageBoxIcon.Error,
-MessageBoxDefaultButton.Button1);
-                }
-
-                if (File.Exists(RInputpath))
-                {
-                    if (checkBox2.Checked == true)
-                    {
-                        Process.Start(RInputpath, "hl.exe");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(
-"Не удалось запустить RInput, так как отсутствует RInput.exe. Проверьте целостность сборки.",
-"HLSP",
-MessageBoxButtons.OK,
-MessageBoxIcon.Error,
-MessageBoxDefaultButton.Button1);
-                }
-
-                if (File.Exists(LiveSplitpath))
-                {
-                    if (checkBox3.Checked == true)
-                    {
-                        Process.Start(LiveSplitpath);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(
-"Не удалось запустить LiveSplit, так как отсутствует LiveSplit.exe. Проверьте целостность сборки.",
-"HLSP",
-MessageBoxButtons.OK,
-MessageBoxIcon.Error,
-MessageBoxDefaultButton.Button1);
-                }
+            }
+        }
+        
+        public void Checker()
+        {
+            if (Process.GetProcessesByName("hl").Length != 0)
+            {
+                
+            }
+            else
+            {
+                Show();
+                controller.updateRPC("discord.gg/E5kg4qV", "Находится в лаунчере", "image_small");
+                timer1.Stop();
             }
         }
 
@@ -151,7 +121,7 @@ MessageBoxDefaultButton.Button1);
 
         private void Button2_MouseLeave(object sender, EventArgs e)
         {
-            button2.UseVisualStyleBackColor = false;
+            button2.UseVisualStyleBackColor = true;
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
@@ -165,18 +135,13 @@ MessageBoxDefaultButton.Button1);
 
         }
 
-        private void CheckBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         async private void Button3_Click(object sender, EventArgs e)
         {
             GameSelection GS = (GameSelection)Application.OpenForms["GameSelection"];
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                GameSelection GameSelection = new GameSelection(); // Создание нового экземпляра формы
+                GameSelection GameSelection = new GameSelection(controller); // Создание нового экземпляра формы
                 GameSelection.Show(); // Отображаю форму
                 GameSelection.Opacity = 0.0;
                 GameSelection.Location = this.Location;
@@ -282,6 +247,28 @@ MessageBoxDefaultButton.Button1);
         private void HL1Setup_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Checker();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(@".\\LiveSplit\LiveSplit.exe"))
+            {
+                Process.Start(@".\\LiveSplit\LiveSplit.exe");
+            }
+            else
+            {
+                MessageBox.Show(
+"LiveSplit не найден. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

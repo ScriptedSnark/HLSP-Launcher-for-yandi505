@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace HLSP_Launcher_for_yandi505
 {
     public partial class GameSelection : Form
     {
-        public GameSelection()
+        MainController controller;
+        public GameSelection(MainController prevFormController)
         {
             InitializeComponent();
+            controller = prevFormController;
             GC.Collect(1, GCCollectionMode.Optimized);
             GC.WaitForPendingFinalizers();
             GC.Collect(1, GCCollectionMode.Optimized);
@@ -127,7 +125,7 @@ MessageBoxDefaultButton.Button1);
             if (HL1 == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                HL1Setup HL1Setup = new HL1Setup(); // Создание нового экземпляра формы
+                HL1Setup HL1Setup = new HL1Setup(controller); // Создание нового экземпляра формы
                 HL1Setup.Show(); // Отображаю форму
                 await Task.Delay(50);
                 FadeIn(HL1Setup, 2);
@@ -164,7 +162,7 @@ MessageBoxDefaultButton.Button1);
             if (OP4 == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                OP4Setup OP4Setup = new OP4Setup(); // Создание нового экземпляра формы
+                OP4Setup OP4Setup = new OP4Setup(controller); // Создание нового экземпляра формы
                 OP4Setup.Show(); // Отображаю форму
                 await Task.Delay(50);
                 FadeIn(OP4Setup, 2);
@@ -202,7 +200,7 @@ MessageBoxDefaultButton.Button1);
             if (BS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
                 FadeOut(this, 2);
-                BSSetup BSSetup = new BSSetup(); // Создание нового экземпляра формы
+                BSSetup BSSetup = new BSSetup(controller); // Создание нового экземпляра формы
                 BSSetup.Show(); // Отображаю форму
                 await Task.Delay(50);
                 FadeIn(BSSetup, 2);
@@ -236,12 +234,40 @@ MessageBoxDefaultButton.Button1);
 
         async private void Button4_Click(object sender, EventArgs e)
         {
-            Process.Start(@".\\OpenAG\hl.exe", "-game ag -noforcemparams +exec autoexec.cfg");
+            if (File.Exists(@".\\OpenAG\hl.exe"))
+            {
+                Process.Start(@".\\OpenAG\hl.exe", "-game ag -noforcemparams +exec autoexec.cfg");
 
-            await Task.Delay(500);
-            Application.Exit();
-            
-            // кобан в аг хочет, чел, если ты это читаешь, то PLAY AG PLAY IT NOW
+                await Task.Delay(4500);
+                controller.updateRPC("discord.gg/E5kg4qV", "Играет в OpenAG", "ag");
+                timer1.Start();
+            }
+            else
+            {
+                MessageBox.Show(
+"Не удалось запустить OpenAG, так как отсутствует hl.exe. Проверьте целостность сборки.",
+"HLSP",
+MessageBoxButtons.OK,
+MessageBoxIcon.Error,
+MessageBoxDefaultButton.Button1);
+                GC.Collect();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+        }
+
+        public void Checker()
+        {
+            if (Process.GetProcessesByName("hl").Length != 0)
+            {
+
+            }
+            else
+            {
+                Show();
+                controller.updateRPC("discord.gg/E5kg4qV", "Находится в лаунчере", "image_small");
+                timer1.Stop();
+            }
         }
 
         private void Button4_MouseEnter(object sender, EventArgs e)
@@ -323,6 +349,11 @@ MessageBoxDefaultButton.Button1);
         private void GameSelection_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Checker();
         }
     }
 }
