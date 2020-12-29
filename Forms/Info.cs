@@ -44,7 +44,7 @@ namespace HLSP_Launcher_for_yandi505
         }
 
         private int counter = 0;
-        async private void Button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
 
@@ -62,8 +62,11 @@ MessageBoxIcon.Warning,
 MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 Process.Start("https://youtu.be/Zjselp9uRgM");
-                await Task.Delay(100);
-                Application.Restart();
+                counter = 0;
+
+                GC.Collect();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
 
@@ -155,6 +158,18 @@ MessageBoxDefaultButton.Button1);
         private void Info_FormClosed(object sender, FormClosedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void button4_MouseEnter(object sender, EventArgs e)
+        {
+            button4.UseVisualStyleBackColor = false;
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            button4.UseVisualStyleBackColor = true;
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
     }
 }

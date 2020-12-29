@@ -79,6 +79,7 @@
             this.speedrun.MinimumSize = new System.Drawing.Size(651, 538);
             this.speedrun.Name = "speedrun";
             this.speedrun.ScriptErrorsSuppressed = true;
+            this.speedrun.ScrollBarsEnabled = false;
             this.speedrun.Size = new System.Drawing.Size(651, 538);
             this.speedrun.TabIndex = 11;
             this.speedrun.Url = new System.Uri("https://www.speedrun.com/hl1", System.UriKind.Absolute);

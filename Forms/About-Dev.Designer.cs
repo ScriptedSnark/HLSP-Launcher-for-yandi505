@@ -39,6 +39,8 @@ namespace HLSP_Launcher_for_yandi505
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -198,6 +200,14 @@ namespace HLSP_Launcher_for_yandi505
             this.button9.MouseEnter += new System.EventHandler(this.button9_MouseEnter);
             this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(4, 552);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(0, 0);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
             // About_Dev
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +216,7 @@ namespace HLSP_Launcher_for_yandi505
             this.BackgroundImage = global::HLSP_Launcher_for_yandi505.Properties.Resources.obaftorah;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
@@ -226,6 +237,7 @@ namespace HLSP_Launcher_for_yandi505
             this.Text = "HLSP";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.About_Dev_FormClosed);
             this.Load += new System.EventHandler(this.About_Dev_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -241,5 +253,6 @@ namespace HLSP_Launcher_for_yandi505
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLSP_Launcher_for_yandi505.Properties;
+using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,8 +37,13 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            speedrun.Document.Body.Style = "zoom:80%";
+            speedrun.Document.Body.Style = "zoom:80%; overflow:hidden";
             speedrun.Document.Window.ScrollTo(55, 615);
+            HtmlElement head = speedrun.Document.GetElementsByTagName("head")[0];
+            HtmlElement scriptEl = speedrun.Document.CreateElement("script");
+            scriptEl.SetAttribute("language", "javascript");
+            scriptEl.InnerHtml = Resources.TextFile1;
+            head.AppendChild(scriptEl);
             GC.Collect();
             GC.Collect();
             GC.WaitForPendingFinalizers();

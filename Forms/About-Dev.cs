@@ -14,10 +14,14 @@ namespace HLSP_Launcher_for_yandi505
             GC.Collect();
             GC.Collect();
             GC.WaitForPendingFinalizers();
+
+            pictureBox1.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             Clipboard.SetText("ScriptedSnark#0341");
             MessageBox.Show(
     "Скопировано в буфер обмена.",
@@ -33,6 +37,8 @@ namespace HLSP_Launcher_for_yandi505
 
         private void button2_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             Clipboard.SetText("yandi505#1366");
             MessageBox.Show(
     "Скопировано в буфер обмена.",
@@ -48,6 +54,8 @@ namespace HLSP_Launcher_for_yandi505
 
         async private void button3_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
@@ -88,6 +96,8 @@ namespace HLSP_Launcher_for_yandi505
 
         private void button5_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -131,6 +141,23 @@ MessageBoxDefaultButton.Button1);
             o.Opacity = 0; //make fully invisible       
         }
 
+        protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
+        {
+            if (m.Msg == 0x84)
+            {
+                base.WndProc(ref m);
+                if ((int)m.Result == 0x1)
+                    m.Result = (IntPtr)0x2;
+                return;
+            }
+
+            base.WndProc(ref m);
+
+            GC.Collect();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
+
         private void About_Dev_Load(object sender, EventArgs e)
         {
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
@@ -145,6 +172,8 @@ MessageBoxDefaultButton.Button1);
 
         private void button6_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -158,6 +187,8 @@ MessageBoxDefaultButton.Button1);
 
         private void button4_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -171,6 +202,8 @@ MessageBoxDefaultButton.Button1);
 
         private void button7_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -184,6 +217,8 @@ MessageBoxDefaultButton.Button1);
 
         private void button8_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             DialogResult result = MessageBox.Show(
 "Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
 "HLSP",
@@ -197,6 +232,8 @@ MessageBoxDefaultButton.Button1);
 
         private void button9_Click(object sender, EventArgs e)
         {
+            pictureBox1.Focus();
+
             Application.Exit();
         }
 
