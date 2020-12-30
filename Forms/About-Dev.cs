@@ -234,7 +234,7 @@ MessageBoxDefaultButton.Button1);
         {
             pictureBox1.Focus();
 
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private void button9_MouseEnter(object sender, EventArgs e)

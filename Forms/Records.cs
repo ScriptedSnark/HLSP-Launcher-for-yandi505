@@ -21,7 +21,7 @@ namespace HLSP_Launcher_for_yandi505
         {
             pictureBox1.Focus();
 
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private void Button2_MouseEnter(object sender, EventArgs e)

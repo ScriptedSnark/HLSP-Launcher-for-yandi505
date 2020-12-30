@@ -210,7 +210,7 @@ MessageBoxDefaultButton.Button1);
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private void Button8_MouseEnter(object sender, EventArgs e)
@@ -268,19 +268,16 @@ MessageBoxDefaultButton.Button1);
         private void Button3_Click(object sender, EventArgs e)
         {
             pictureBox1.Focus();
-            if (File.Exists(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt"))
-            {
-                Process.Start(@".\\.ИНСТРУКЦИЯ И БИНДЫ.txt");
-            }
-            else
-            {
-                MessageBox.Show(
-    "Инструкция не найдена. Убедитесь, что файл .ИНСТРУКЦИЯ И БИНДЫ.txt присутствует в директории сборки.",
-    "HLSP",
-    MessageBoxButtons.OK,
-    MessageBoxIcon.Error,
-    MessageBoxDefaultButton.Button1);
-            }
+
+            DialogResult result = MessageBox.Show(
+"Внимание! При нажатии на кнопку Да, у вас откроется браузер. Согласны ли вы перейти по ссылке?",
+"HLSP",
+MessageBoxButtons.YesNo,
+MessageBoxIcon.Warning,
+MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.Yes)
+                Process.Start("https://vk.com/@grunge_isdead-speedrunpackage");
         }
 
         private void Button3_MouseEnter(object sender, EventArgs e)

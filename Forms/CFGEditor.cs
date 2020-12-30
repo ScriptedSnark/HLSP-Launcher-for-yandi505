@@ -242,7 +242,7 @@ MessageBoxDefaultButton.Button1);
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private void Button8_MouseEnter(object sender, EventArgs e)

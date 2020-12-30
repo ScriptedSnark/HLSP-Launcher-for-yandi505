@@ -107,7 +107,7 @@ MessageBoxDefaultButton.Button1);
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         private async void FadeIn(Form o, int interval = 228)
