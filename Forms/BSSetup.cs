@@ -108,17 +108,6 @@ MessageBoxDefaultButton.Button1);
                 Process.Start("https://discord.gg/E5kg4qV");
         }
 
-        private void Button5_MouseEnter(object sender, EventArgs e)
-        {
-            button5.UseVisualStyleBackColor = false;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Blue);
-        }
-
-        private void Button5_MouseLeave(object sender, EventArgs e)
-        {
-            button1.UseVisualStyleBackColor = true;
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
         private void Button6_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -132,17 +121,6 @@ MessageBoxDefaultButton.Button1);
                 Process.Start("https://www.youtube.com/channel/UCyfrmhORgydjd2cHFwB7YVw");
         }
 
-        private void Button6_MouseEnter(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, Color.Red);
-        }
-
-        private void Button6_MouseLeave(object sender, EventArgs e)
-        {
-            button6.UseVisualStyleBackColor = false;
-            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
 
         async private void Button2_Click(object sender, EventArgs e)
         {
@@ -175,7 +153,7 @@ MessageBoxDefaultButton.Button1);
         private void Button2_MouseEnter(object sender, EventArgs e)
         {
             button2.UseVisualStyleBackColor = false;
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
         }
 
         private void Button2_MouseLeave(object sender, EventArgs e)

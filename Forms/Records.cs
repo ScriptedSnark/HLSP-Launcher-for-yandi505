@@ -90,7 +90,7 @@ namespace HLSP_Launcher_for_yandi505
         private void Button1_MouseEnter(object sender, EventArgs e)
         {
             button1.UseVisualStyleBackColor = false;
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
         }
 
         private void Button1_MouseLeave(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace HLSP_Launcher_for_yandi505
         private void Button7_MouseEnter(object sender, EventArgs e)
         {
             button7.UseVisualStyleBackColor = false;
-            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
         }
 
         private void Button7_MouseLeave(object sender, EventArgs e)

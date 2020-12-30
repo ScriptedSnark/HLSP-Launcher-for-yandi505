@@ -311,7 +311,7 @@ MessageBoxDefaultButton.Button1);
         private void Button7_MouseEnter(object sender, EventArgs e)
         {
             button7.UseVisualStyleBackColor = false;
-            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, Color.White);
+            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
         }
 
         private void Button7_MouseLeave(object sender, EventArgs e)
@@ -326,7 +326,7 @@ MessageBoxDefaultButton.Button1);
                 await Task.Delay(interval);
                 o.Opacity += 0.10;
             }
-            o.Opacity = 1; //make fully visible       
+            o.Opacity = 1;       
         }
 
         private async void FadeOut(Form o, int interval = 228)
@@ -336,7 +336,7 @@ MessageBoxDefaultButton.Button1);
                 await Task.Delay(interval);
                 o.Opacity -= 0.10;
             }
-            o.Opacity = 0; //make fully invisible       
+            o.Opacity = 0;       
         }
 
         private void Form2_Load(object sender, EventArgs e)
