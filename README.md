@@ -12,3 +12,4 @@ TODO:
 
  - [x] Full optimization 
 
+Thanks to n1kodim for helping.
