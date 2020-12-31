@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using DiscordRPC;
 using System.Net;
-using System.IO;
 
 namespace HLSP_Launcher_for_yandi505
 {

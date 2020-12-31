@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Records));
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.speedrun = new System.Windows.Forms.WebBrowser();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +54,8 @@
             this.button7.TabStop = false;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
+            this.button7.MouseEnter += new System.EventHandler(this.Button7_MouseEnter);
+            this.button7.MouseLeave += new System.EventHandler(this.Button7_MouseLeave);
             // 
             // button1
             // 
@@ -74,15 +78,18 @@
             // speedrun
             // 
             this.speedrun.AllowNavigation = false;
-            this.speedrun.Location = new System.Drawing.Point(66, 58);
-            this.speedrun.MaximumSize = new System.Drawing.Size(651, 538);
-            this.speedrun.MinimumSize = new System.Drawing.Size(651, 538);
+            this.speedrun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.speedrun.IsWebBrowserContextMenuEnabled = false;
+            this.speedrun.Location = new System.Drawing.Point(66, 60);
+            this.speedrun.MaximumSize = new System.Drawing.Size(651, 527);
+            this.speedrun.MinimumSize = new System.Drawing.Size(651, 527);
             this.speedrun.Name = "speedrun";
             this.speedrun.ScriptErrorsSuppressed = true;
             this.speedrun.ScrollBarsEnabled = false;
-            this.speedrun.Size = new System.Drawing.Size(651, 538);
+            this.speedrun.Size = new System.Drawing.Size(651, 527);
             this.speedrun.TabIndex = 11;
             this.speedrun.Url = new System.Uri("https://www.speedrun.com/hl1", System.UriKind.Absolute);
+            this.speedrun.WebBrowserShortcutsEnabled = false;
             this.speedrun.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.Speedrun_DocumentCompleted);
             // 
             // button2
@@ -111,6 +118,11 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Records
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +144,7 @@
             this.Name = "Records";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HLSP";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Records_FormClosed);
             this.Load += new System.EventHandler(this.Records_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -145,5 +158,6 @@
         private System.Windows.Forms.WebBrowser speedrun;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

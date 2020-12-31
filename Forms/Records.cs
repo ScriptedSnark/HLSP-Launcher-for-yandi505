@@ -37,16 +37,13 @@ namespace HLSP_Launcher_for_yandi505
         }
         private void Speedrun_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            speedrun.Document.Body.Style = "zoom:80%; overflow:hidden";
-            speedrun.Document.Window.ScrollTo(55, 615);
+            speedrun.Document.Body.Style = "zoom:80%";
             HtmlElement head = speedrun.Document.GetElementsByTagName("head")[0];
             HtmlElement scriptEl = speedrun.Document.CreateElement("script");
             scriptEl.SetAttribute("language", "javascript");
             scriptEl.InnerHtml = Resources.TextFile1;
             head.AppendChild(scriptEl);
-            GC.Collect();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            speedrun.Document.Window.ScrollTo(55, 615);
         }
 
         private void Records_Load(object sender, EventArgs e)
@@ -54,6 +51,19 @@ namespace HLSP_Launcher_for_yandi505
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
             MainMenu.Opacity = 0.0;
             MainMenu.Location = this.Location;
+        }
+
+        protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
+        {
+            if (m.Msg == 0x84)
+            {
+                base.WndProc(ref m);
+                if ((int)m.Result == 0x1)
+                    m.Result = (IntPtr)0x2;
+                return;
+            }
+
+            base.WndProc(ref m);
         }
 
         async private void Button1_Click(object sender, EventArgs e)
@@ -84,6 +94,10 @@ namespace HLSP_Launcher_for_yandi505
                 FadeIn(MM, 2);
                 await Task.Delay(50);
                 Hide();
+                Controls.Remove(speedrun);
+                speedrun.Dispose();
+                speedrun = null;
+                this.Dispose();
             }
         }
 
@@ -134,9 +148,14 @@ namespace HLSP_Launcher_for_yandi505
                 await Task.Delay(50);
                 FadeIn(Inf, 2);
                 Hide();
+                Controls.Remove(speedrun);
+                speedrun.Dispose();
+                speedrun = null;
+                this.Dispose();
             }
             else
             {
+                FadeOut(this, 2);
                 Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
@@ -144,6 +163,10 @@ namespace HLSP_Launcher_for_yandi505
                 FadeIn(Info, 2);
                 await Task.Delay(50);
                 Hide();
+                Controls.Remove(speedrun);
+                speedrun.Dispose();
+                speedrun = null;
+                this.Dispose();
             }
         }
         private void Button7_MouseEnter(object sender, EventArgs e)
@@ -156,6 +179,23 @@ namespace HLSP_Launcher_for_yandi505
         {
             button7.UseVisualStyleBackColor = true;
             button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
+        }
+
+        private void Optimizator()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Optimizator();
+        }
+
+        private void Records_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
