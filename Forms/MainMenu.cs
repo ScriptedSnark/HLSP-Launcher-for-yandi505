@@ -26,7 +26,7 @@ namespace HLSP_Launcher_for_yandi505
         private void Form1_Load(object sender, EventArgs e)
         {
             // VERSION OF HLSP
-            string HLSPversion = "1.0.0.0";
+            string HLSPversion = "1.0.0.1";
             // VERSION OF HLSP
 
             WebClient webClient = new WebClient();
