@@ -67,24 +67,24 @@ MessageBoxDefaultButton.Button1);
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
                 MainMenu.Show(); // Отображаю форму
                 MainMenu.Opacity = 0.0;
                 MainMenu.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(MainMenu, 2);
+                FadeIn(MainMenu, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
-                FadeIn(MM, 2);
+                FadeIn(MM, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -124,22 +124,22 @@ MessageBoxDefaultButton.Button1);
             HL1Setup HL1 = (HL1Setup)Application.OpenForms["HL1Setup"];
             if (HL1 == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 HL1Setup HL1Setup = new HL1Setup(controller); // Создание нового экземпляра формы
                 HL1Setup.Show(); // Отображаю форму
                 await Task.Delay(50);
-                FadeIn(HL1Setup, 2);
+                FadeIn(HL1Setup, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 HL1.Opacity = 0.0;
                 HL1.Location = this.Location;
                 HL1.Show();
                 await Task.Delay(50);
-                FadeIn(HL1, 2);
+                FadeIn(HL1, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -161,7 +161,7 @@ MessageBoxDefaultButton.Button1);
             OP4Setup OP4 = (OP4Setup)Application.OpenForms["OP4Setup"];
             if (OP4 == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 OP4Setup OP4Setup = new OP4Setup(controller); // Создание нового экземпляра формы
                 OP4Setup.Show(); // Отображаю форму
                 await Task.Delay(50);
@@ -171,12 +171,12 @@ MessageBoxDefaultButton.Button1);
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 OP4.Opacity = 0.0;
                 OP4.Location = this.Location;
                 OP4.Show();
                 await Task.Delay(50);
-                FadeIn(OP4, 2);
+                FadeIn(OP4, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -199,22 +199,22 @@ MessageBoxDefaultButton.Button1);
             BSSetup BS = (BSSetup)Application.OpenForms["BSSetup"];
             if (BS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 BSSetup BSSetup = new BSSetup(controller); // Создание нового экземпляра формы
                 BSSetup.Show(); // Отображаю форму
                 await Task.Delay(50);
-                FadeIn(BSSetup, 2);
+                FadeIn(BSSetup, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 BS.Opacity = 0.0;
                 BS.Location = this.Location;
                 BS.Show();
                 await Task.Delay(50);
-                FadeIn(BS, 2);
+                FadeIn(BS, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -239,7 +239,7 @@ MessageBoxDefaultButton.Button1);
                 Process.Start(@".\\OpenAG\hl.exe", "-game ag -noforcemparams +exec autoexec.cfg");
 
                 await Task.Delay(4500);
-                controller.updateRPC("discord.gg/E5kg4qV", "Играет в OpenAG", "ag");
+                controller.updateRPC("Версия 1.1", "Играет в OpenAG", "ag");
                 timer1.Start();
             }
             else
@@ -265,7 +265,7 @@ MessageBoxDefaultButton.Button1);
             else
             {
                 Show();
-                controller.updateRPC("discord.gg/E5kg4qV", "Находится в лаунчере", "image_small");
+                controller.updateRPC("Версия 1.1", "Находится в лаунчере", "image_small");
                 timer1.Stop();
             }
         }
@@ -282,43 +282,6 @@ MessageBoxDefaultButton.Button1);
             button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
-        async private void Button7_Click(object sender, EventArgs e)
-        {
-            Info Inf = (Info)Application.OpenForms["Info"];
-            if (Inf == null) // optimizator activated, если форма не была создана, то давай уже создавайся
-            {
-                FadeOut(this, 2);
-                Info Info = new Info(); // Создание нового экземпляра формы
-                Info.Show(); // Отображаю форму
-                await Task.Delay(50);
-                FadeIn(Info, 2);
-                await Task.Delay(50);
-                Hide();
-            }
-            else
-            {
-                FadeOut(this, 2);
-                Inf.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
-                Inf.Opacity = 0.0;
-                Inf.Location = this.Location;
-                await Task.Delay(50);
-                FadeIn(Inf, 2);
-                await Task.Delay(50);
-                Hide();
-            }
-        }
-
-        private void Button7_MouseEnter(object sender, EventArgs e)
-        {
-            button7.UseVisualStyleBackColor = false;
-            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
-        }
-
-        private void Button7_MouseLeave(object sender, EventArgs e)
-        {
-            button7.UseVisualStyleBackColor = true;
-            button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
-        }
         private async void FadeIn(Form o, int interval = 228)
         {
             while (o.Opacity < 1.0)
@@ -342,8 +305,8 @@ MessageBoxDefaultButton.Button1);
         private void Form2_Load(object sender, EventArgs e)
         {
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
-            this.Opacity = 0.0;
-            this.Location = MainMenu.Location;
+            Opacity = 0.0;
+            Location = MainMenu.Location;
         }
 
         private void GameSelection_FormClosed(object sender, FormClosedEventArgs e)
@@ -354,6 +317,26 @@ MessageBoxDefaultButton.Button1);
         private void timer1_Tick(object sender, EventArgs e)
         {
             Checker();
+        }
+
+        async private void button6_Click_1(object sender, EventArgs e)
+        {
+            Process.Start(@".\\");
+            pictureBox1.Focus();
+            await Task.Delay(100);
+            pictureBox1.Focus();
+        }
+
+        private void button6_MouseEnter(object sender, EventArgs e)
+        {
+            button6.UseVisualStyleBackColor = false;
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(6, Color.FloralWhite);
+        }
+
+        private void button6_MouseLeave(object sender, EventArgs e)
+        {
+            button6.UseVisualStyleBackColor = true;
+            button6.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
     }
 }

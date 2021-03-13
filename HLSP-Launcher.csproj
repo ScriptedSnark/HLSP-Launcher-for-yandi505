@@ -36,8 +36,8 @@
     <ApplicationIcon>3.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiscordRPC, Version=1.0.169.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DiscordRichPresence.1.0.169\lib\net35\DiscordRPC.dll</HintPath>
+    <Reference Include="DiscordRPC, Version=1.0.175.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DiscordRichPresence.1.0.175\lib\net35\DiscordRPC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -73,6 +73,12 @@
     </Compile>
     <Compile Include="Forms\CFGEditor.Designer.cs">
       <DependentUpon>CFGEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Changelog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Changelog.Designer.cs">
+      <DependentUpon>Changelog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GameSelection.cs">
       <SubType>Form</SubType>
@@ -122,6 +128,9 @@
     <EmbeddedResource Include="Forms\CFGEditor.resx">
       <DependentUpon>CFGEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Changelog.resx">
+      <DependentUpon>Changelog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameSelection.resx">
       <DependentUpon>GameSelection.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +175,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3.ico" />
+    <None Include="Resources\rekords1.png" />
+    <None Include="Resources\changelogtext.txt" />
+    <None Include="Resources\changelog.png" />
+    <None Include="Resources\argbutton.png" />
+    <None Include="Resources\CFGEditor.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\GameSelection.png" />
     <Content Include="update_version.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

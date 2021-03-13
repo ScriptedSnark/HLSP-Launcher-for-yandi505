@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace HLSP_Launcher_for_yandi505
 {
@@ -138,24 +139,24 @@ MessageBoxDefaultButton.Button1);
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
                 MainMenu.Show(); // Отображаю форму
                 MainMenu.Opacity = 0.0;
                 MainMenu.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(MainMenu, 2);
+                FadeIn(MainMenu, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
-                FadeIn(MM, 2);
+                FadeIn(MM, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -206,23 +207,23 @@ MessageBoxDefaultButton.Button1);
             Info Info = (Info)Application.OpenForms["Info"];
             if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 Info Inf = new Info();
                 Inf.Show();
                 Inf.Opacity = 0.0;
                 Inf.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Inf, 2);
+                FadeIn(Inf, 1);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Info, 2);
+                FadeIn(Info, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -259,7 +260,7 @@ MessageBoxDefaultButton.Button1);
         private void Form8_Load(object sender, EventArgs e)
         {
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
-            this.Opacity = 0.0;
+            this.Opacity = 0;
             this.Location = MainMenu.Location;
         }
 

@@ -16,11 +16,10 @@ namespace HLSP_Launcher_for_yandi505
         private string _defaultDetails;
         private string _defaultSmallImage;
 
-
         public MainController()
         {
             _defaultState = String.Format("Находится в лаунчере");
-            _defaultDetails = "discord.gg/E5kg4qV";
+            _defaultDetails = "Версия 1.1";
             _defaultSmallImage = "image_small";
 
             client = new DiscordRpcClient("734435821310050446");
@@ -43,10 +42,15 @@ namespace HLSP_Launcher_for_yandi505
                 Details = details, // Основное описание
                 State = state, // Состояние (Что делает)
                 Timestamps = Timestamps.Now,
+                Buttons = new Button[]
+                {
+                    new Button() { Label = "Скачать сборку", Url = "https://vk.com/@grunge_isdead-speedrunpackage" },
+                    new Button() { Label = "Туториалы", Url = "https://www.youtube.com/yandi505" }
+                },
                 Assets = new Assets()
                 {
                     LargeImageKey = "image_large",
-                    LargeImageText = "YouTube: Уголок Спидраннера",
+                    LargeImageText = "Авторы лаунчера - ScriptedSnark и yandi505",
                     SmallImageKey = smallImage
                 }
             });

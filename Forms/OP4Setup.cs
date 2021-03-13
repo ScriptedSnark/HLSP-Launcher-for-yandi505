@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -55,7 +50,7 @@ namespace HLSP_Launcher_for_yandi505
         {
             if (File.Exists(@".\\Half-Life\hl.exe"))
             {
-                Process.Start(@".\\Half-Life\hl.exe", "-game gearbox_WON -noforcemparams +exec autoexec.cfg");
+                Process.Start(@".\\Half-Life\hl.exe", "-game gearbox_WON -noforcemparams +exec autoexec.cfg " + textBox1.Text);
 
                 if (checkBox1.Checked == true)
                 {
@@ -70,7 +65,7 @@ namespace HLSP_Launcher_for_yandi505
                 Hide();
 
                 await Task.Delay(4500);
-                controller.updateRPC("discord.gg/E5kg4qV", "Играет в Half-Life: Opposing Force", "op4won");
+                controller.updateRPC("Версия 1.1", "Играет в Half-Life: Opposing Force", "op4won");
                 timer1.Start();
             }
             else
@@ -96,7 +91,7 @@ MessageBoxDefaultButton.Button1);
             else
             {
                 Show();
-                controller.updateRPC("discord.gg/E5kg4qV", "Находится в лаунчере", "image_small");
+                controller.updateRPC("Версия 1.1", "Находится в лаунчере", "image_small");
                 timer1.Stop();
             }
         }
@@ -135,23 +130,22 @@ MessageBoxDefaultButton.Button1);
             GameSelection GS = (GameSelection)Application.OpenForms["GameSelection"];
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 GameSelection GameSelection = new GameSelection(controller); // Создание нового экземпляра формы
                 GameSelection.Show(); // Отображаю форму
                 GameSelection.Opacity = 0.0;
                 GameSelection.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(GameSelection, 2);
+                FadeIn(GameSelection, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
+                FadeOut(this, 1);
                 GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
-                GS.Opacity = 0.0;
-                GS.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(GS, 2);
+                FadeIn(GS, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -239,6 +233,13 @@ MessageBoxButtons.OK,
 MessageBoxIcon.Error,
 MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            button5.Visible = false;
+            textBox1.Visible = true;
+            button5.Dispose();
         }
     }
 }

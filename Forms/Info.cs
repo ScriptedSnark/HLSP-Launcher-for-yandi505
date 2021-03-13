@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -26,7 +21,7 @@ namespace HLSP_Launcher_for_yandi505
         private void Form3_Load(object sender, EventArgs e)
         {
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
-            this.Opacity = 0.0;
+            this.Opacity = 0;
             this.Location = MainMenu.Location;
         }
 
@@ -50,10 +45,11 @@ namespace HLSP_Launcher_for_yandi505
 
             counter++;
 
-            if (counter == 15)
+            if (counter == 16)
             {
                 SoundPlayer player = new SoundPlayer(Resources.activated);
                 player.Play();
+                counter = 0;
                 DialogResult result = MessageBox.Show(
 "Ты активировал пасхалку. Если ты перейдешь по видео, то узнаешь как играть на этой сборке без лицензии. Перейти по ссылке на видео?",
 "HLSP",
@@ -62,7 +58,6 @@ MessageBoxIcon.Warning,
 MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.Yes)
                 Process.Start("https://youtu.be/Zjselp9uRgM");
-                counter = 0;
 
                 GC.Collect();
                 GC.Collect();
@@ -82,24 +77,24 @@ MessageBoxDefaultButton.Button1);
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
                 MainMenu.Show(); // Отображаю форму
                 MainMenu.Opacity = 0.0;
                 MainMenu.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(MainMenu, 2);
+                FadeIn(MainMenu, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MM.Show();
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(MM, 2);
+                FadeIn(MM, 1);
                 await Task.Delay(50);
                 Hide();
             }

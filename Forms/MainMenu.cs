@@ -26,13 +26,15 @@ namespace HLSP_Launcher_for_yandi505
         private void Form1_Load(object sender, EventArgs e)
         {
             // VERSION OF HLSP
-            string HLSPversion = "1.0.0.0";
+            string HLSPversion = "1.1";
             // VERSION OF HLSP
 
-            WebClient webClient = new WebClient();
             // Плавность запуска
-            this.Opacity = 0;
-            FadeIn(this, 20);
+            Opacity = 0.0;
+            FadeIn(this, 5);
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            WebClient webClient = new WebClient();
 
             try
             {
@@ -46,9 +48,14 @@ namespace HLSP_Launcher_for_yandi505
                         }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(
+        ex.Message,
+        "HLSP",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Error,
+        MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -99,24 +106,22 @@ namespace HLSP_Launcher_for_yandi505
             CFGEditor CE = (CFGEditor)Application.OpenForms["CFGEditor"];
             if (CE == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 CFGEditor CFGEdit = new CFGEditor(); // Создание нового экземпляра формы
                 CFGEdit.Show(); // Отображаю форму
-                CFGEdit.Opacity = 0.0;
-                CFGEdit.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(CFGEdit, 2);
+                FadeIn(CFGEdit, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 CE.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 CE.Opacity = 0.0;
                 CE.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(CE, 2);
+                FadeIn(CE, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -170,22 +175,22 @@ MessageBoxDefaultButton.Button1);
             GameSelection GS = (GameSelection)Application.OpenForms["GameSelection"];
             if (GS == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 GameSelection GameSelection = new GameSelection(controller); // Отображаю форму
                 GameSelection.Show();
                 await Task.Delay(50);
-                FadeIn(GameSelection, 2);
+                FadeIn(GameSelection, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 GS.Opacity = 0.0;
                 GS.Location = this.Location;
                 GS.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 await Task.Delay(50);
-                FadeIn(GS, 2);
+                FadeIn(GS, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -229,22 +234,22 @@ MessageBoxDefaultButton.Button1);
             Info Info = (Info)Application.OpenForms["Info"];
             if (Info == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 Info Inf = new Info();
                 Inf.Show();
                 await Task.Delay(50);
-                FadeIn(Inf, 2);
+                FadeIn(Inf, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 Info.Opacity = 0.0;
                 Info.Location = this.Location;
                 Info.Show(); // АГА ПОПАВСЯ, ТЫ ДУМАЛ МНЕ ТУТ ОПЕРАТИВУ НЕМНОГО ЗАНЯТЬ?
                 await Task.Delay(50);
-                FadeIn(Info, 2);
+                FadeIn(Info, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -291,39 +296,19 @@ MessageBoxDefaultButton.Button1);
             button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
         }
 
-        private async void FadeIn(Form o, int interval = 228)
-        {
-            while (o.Opacity < 1.0)
-            {
-                await Task.Delay(interval);
-                o.Opacity += 0.10;
-            }
-            o.Opacity = 1; //make fully visible       
-        }
-
-        private async void FadeOut(Form o, int interval = 228)
-        {
-            while (o.Opacity > 0.0)
-            {
-                await Task.Delay(interval);
-                o.Opacity -= 0.10;
-            }
-            o.Opacity = 0; //make fully invisible       
-        }
-
         async private void Button4_Click_1(object sender, EventArgs e)
         {
             pictureBox1.Focus();
             Records Records = (Records)Application.OpenForms["Records"];
             if (Records == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 Records Rec = new Records(); // Создание нового экземпляра формы
                 Rec.Show(); // Отображаю форму
                 Rec.Opacity = 0.0;
                 Rec.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Rec, 2);
+                FadeIn(Rec, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -333,7 +318,7 @@ MessageBoxDefaultButton.Button1);
                 Records.Opacity = 0.0;
                 Records.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(Records, 2);
+                FadeIn(Records, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -361,22 +346,22 @@ MessageBoxDefaultButton.Button1);
             About_Dev AboutDev = (About_Dev)Application.OpenForms["About_Dev"];
             if (AboutDev == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 About_Dev About = new About_Dev(); // Создание нового экземпляра формы
                 About.Show(); // Отображаю форму
                 await Task.Delay(50);
-                FadeIn(About, 2);
+                FadeIn(About, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 AboutDev.Show();
                 AboutDev.Opacity = 0.0;
                 AboutDev.Location = this.Location;
                 await Task.Delay(50);
-                FadeIn(AboutDev, 2);
+                FadeIn(AboutDev, 1);
                 await Task.Delay(50);
                 Hide();
             }
@@ -392,6 +377,39 @@ MessageBoxDefaultButton.Button1);
         {
             button9.UseVisualStyleBackColor = true;
             button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(100, Color.Transparent);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Changelog Changelog = (Changelog)Application.OpenForms["Changelog"];
+            if (Changelog == null) // optimizator activated, если форма не была создана, то давай уже создавайся
+            {
+                Changelog Log = new Changelog(); // Создание нового экземпляра формы
+                Log.Show(); // Отображаю форму
+            }
+            else
+            {
+                Changelog.Show();
+            }
+        }
+        private async void FadeIn(Form o, int interval = 228)
+        {
+            while (o.Opacity < 1.0)
+            {
+                await Task.Delay(interval);
+                o.Opacity += 0.10;
+            }
+            o.Opacity = 1;
+        }
+
+        private async void FadeOut(Form o, int interval = 228)
+        {
+            while (o.Opacity > 0.0)
+            {
+                await Task.Delay(interval);
+                o.Opacity -= 0.10;
+            }
+            o.Opacity = 0;
         }
     }
 }

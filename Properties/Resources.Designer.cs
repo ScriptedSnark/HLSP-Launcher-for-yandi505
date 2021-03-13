@@ -82,6 +82,16 @@ namespace HLSP_Launcher_for_yandi505.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap argbutton {
+            get {
+                object obj = ResourceManager.GetObject("argbutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BSSetup {
             get {
                 object obj = ResourceManager.GetObject("BSSetup", resourceCulture);
@@ -96,6 +106,39 @@ namespace HLSP_Launcher_for_yandi505.Properties {
             get {
                 object obj = ResourceManager.GetObject("CFGEditor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap changelog {
+            get {
+                object obj = ResourceManager.GetObject("changelog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Версия от 13 марта [v1.1]
+        ///
+        ///Добавлено:
+        ///● Ченджлог (список изменений на текущую версию)
+        ///● Кнопка в окне &quot;Выбор игры&quot;, отвечающая за открытие директории сборки
+        ///● Выделено место для ввода параметров запуска hl.exe (-noforcemparams / -game ИГРА / +exec autoexec.cfg ВЫСТАВЛЕН В КОДЕ, МОЖЕТЕ НЕ ПИСАТЬ ЭТО)
+        ///
+        ///Исправлено:
+        ///● Исправлена проблема с тем, что уведомление об обновлении не появляется
+        ///
+        ///Вырезано:
+        ///● Все кнопки &quot;!&quot; со всех окон, кроме главного меню и выбора игры
+        ///
+        ///Изменено:
+        ///● Немного изменены некот [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string changelogtext {
+            get {
+                return ResourceManager.GetString("changelogtext", resourceCulture);
             }
         }
         

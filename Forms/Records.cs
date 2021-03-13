@@ -49,8 +49,8 @@ namespace HLSP_Launcher_for_yandi505
         private void Records_Load(object sender, EventArgs e)
         {
             MainMenu MainMenu = (MainMenu)Application.OpenForms["MainMenu"];
-            MainMenu.Opacity = 0.0;
-            MainMenu.Location = this.Location;
+            Opacity = 0.0;
+            Location = MainMenu.Location;
         }
 
         protected override void WndProc(ref Message m) // Этот код делает возможность передвижения формы без окна
@@ -76,22 +76,22 @@ namespace HLSP_Launcher_for_yandi505
             MainMenu MM = (MainMenu)Application.OpenForms["MainMenu"];
             if (MM == null) // optimizator activated, если форма не была создана, то давай уже создавайся
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MainMenu MainMenu = new MainMenu(); // Создание нового экземпляра формы
                 MainMenu.Show(); // Отображаю форму
                 await Task.Delay(50);
-                FadeIn(MainMenu, 2);
+                FadeIn(MainMenu, 1);
                 await Task.Delay(50);
                 Hide();
             }
             else
             {
-                FadeOut(this, 2);
+                FadeOut(this, 1);
                 MM.Opacity = 0.0;
                 MM.Location = this.Location;
                 MM.Show();
                 await Task.Delay(50);
-                FadeIn(MM, 2);
+                FadeIn(MM, 1);
                 await Task.Delay(50);
                 Hide();
                 Controls.Remove(speedrun);
